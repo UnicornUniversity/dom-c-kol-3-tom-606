@@ -11,6 +11,8 @@ export function main(dtoIn) {
   //Je výrazně doporučeno úkol rozdělit do více podfunkcí, aby se zabránilo nepřehlednosti kódu. Ta je také bodována.
   //readme: github.com/UnicornUniversity/dom-c-kol-3-tom-606
   //edit doc
+  // bude třeba udělat pole mužských jmen, ženských jmen, mužských a ženských přímení, vybírat na základě pohlaví, to v různých funkcí...
+
   //let dtoOut = exMain(dtoIn);
   return dtoOut;
 }
