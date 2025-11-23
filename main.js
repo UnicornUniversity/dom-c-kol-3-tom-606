@@ -8,6 +8,9 @@
  */
 export function main(dtoIn) {
   //TODO code
+  //Je výrazně doporučeno úkol rozdělit do více podfunkcí, aby se zabránilo nepřehlednosti kódu. Ta je také bodována.
+  //readme: github.com/UnicornUniversity/dom-c-kol-3-tom-606
+  //edit doc
   //let dtoOut = exMain(dtoIn);
   return dtoOut;
 }
