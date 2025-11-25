@@ -55,10 +55,10 @@ function names(count) {
                 break;
             case 1:
                 clovek.gender = "female";
-                let randomFNameIndex = Math.floor(Math.random() * zenaKrestni.length);
-                clovek.name = zenaKrestni[randomFNameIndex];
-                let randomFSurnameIndex = Math.floor(Math.random() * zenaPrimeni.length);
-                clovek.surname = zenaPrimeni[randomFSurnameIndex];
+                // let randomFNameIndex = Math.floor(Math.random() * zenaKrestni.length);
+                clovek.name = zenaKrestni[(Math.floor(Math.random() * zenaKrestni.length))];
+                // let randomFSurnameIndex = Math.floor(Math.random() * zenaPrimeni.length);
+                clovek.surname = zenaPrimeni[(randomFSurnameIndex = Math.floor(Math.random() * zenaPrimeni.length))];
                 break;
         }
         pplArray.push(clovek);
