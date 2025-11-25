@@ -1,10 +1,11 @@
-//TODO add imports if needed
-//TODO doc
 /**
- * The main function which calls the application. 
- * Please, add specific description here for the application purpose.
- * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
- * @returns {Array} of employees
+ * Generates an array of random birthdates in ISO format
+ * within the given age range relative to the current date.
+ *
+ * @param {number} count - Number of birthdates to generate.
+ * @param {number} minAge - Minimum age (youngest possible person).
+ * @param {number} maxAge - Maximum age (oldest possible person).
+ * @returns {string[]} - Array of birthdates in ISO string format.
  */
 
 function BirthdayRandomizer(count, minAge, maxAge) {
@@ -16,7 +17,7 @@ function BirthdayRandomizer(count, minAge, maxAge) {
     let BirthdayArray = [];
     for(let i = 0; i < count; i++) {
     let randomBirthdayInMS=(Math.floor(Math.random() * (youngestBirthday - oldestBirthday + 1) + oldestBirthday));
-    // + 1 umožňuje, že se může vygenerovat i maximální hodnota.
+    // + 1 umožňuje vygenerovat i maximální hodnota.
     // validace výstupu
     if (randomBirthdayInMS<oldestBirthday || randomBirthdayInMS>youngestBirthday) {
     console.log("ERROR");
@@ -29,7 +30,14 @@ function BirthdayRandomizer(count, minAge, maxAge) {
   return BirthdayArray;
 }
 
-
+/**
+ * Generates an array of people objects with random gender,
+ * first name and surname, the latter two depending on generated gender.
+ *
+ * @param {number} count - Number of people to generate.
+ * @returns {Array<{gender: string, name: string, surname: string}>}
+ * Array of people objects.
+ */
 function names(count) {
     const muzKrestni = ["Richard", "Michal", "Igor", "Bohouš", "Jakub", "Ondra", "Tomáš", "Jan", "Martin", "Tonda", "Josef", "Jarmil", "Jára", "Miloš", "David", "Václav", "Karel", "Přemysl", "Otakar"] //19
     const muzPrimeni = ["Genzer", "Suchánek", "Chmela", "Novotný", "Kohák", "Sokol", "Sýkora", "Vrána,", "Vrabec", "Skočdopole", "Nudil", "Vrtěl", "Cimrman", "Zeman", "Sušil", "Havel", "Čtvrtý", "Hnědý", "Holub"] //19
@@ -64,7 +72,14 @@ function names(count) {
     }
     return pplArray;
 }
-
+/**
+ * Generates an array of random workload values.
+ * Workload values are chosen from [10, 20, 30, 40].
+ * 40 means full-time.
+ * 
+ * @param {number} count - Number of workload values to generate.
+ * @returns {number[]} Array of workload values.
+ */
 function workloadGen(count) {
   let workloadArray = [];
   for (let i = 0; i < count; i++) {
@@ -86,14 +101,14 @@ function workloadGen(count) {
   }
   return workloadArray;
 }
-
+/**
+ * The main function which calls the application. 
+ * Generates an aray of objects of employees based on input dtoIn.
+ * This function valides input, calls functions and then returns their output in an Array.
+ * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
+ * @returns {Array} of employees
+ */
 export function main(dtoIn) {
-
-
-  //TODO code
-  //readme: github.com/UnicornUniversity/dom-c-kol-3-tom-606
-  //TODO edit doc
-
     // Validace vstupu
   if (Number.isNaN(dtoIn.count) || Number.isNaN(dtoIn.age.min) || Number.isNaN(dtoIn.age.max)) {
     console.log("ERROR - Chybné vstupní hodnoty!");
@@ -119,8 +134,5 @@ export function main(dtoIn) {
   }
   console.log(vystup);
   return vystup;
-
-      //let dtoOut = exMain(dtoIn);
-  // return dtoOut;
 }
 
