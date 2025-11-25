@@ -58,7 +58,7 @@ function names(count) {
                 // let randomFNameIndex = Math.floor(Math.random() * zenaKrestni.length);
                 clovek.name = zenaKrestni[(Math.floor(Math.random() * zenaKrestni.length))];
                 // let randomFSurnameIndex = Math.floor(Math.random() * zenaPrimeni.length);
-                clovek.surname = zenaPrimeni[(randomFSurnameIndex = Math.floor(Math.random() * zenaPrimeni.length))];
+                clovek.surname = zenaPrimeni[(Math.floor(Math.random() * zenaPrimeni.length))];
                 break;
         }
         pplArray.push(clovek);
