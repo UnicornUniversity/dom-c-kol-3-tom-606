@@ -16,15 +16,13 @@ function BirthdayRandomizer(count, minAge, maxAge) {
     let BirthdayArray = [];
     for(let i = 0; i < count; i++) {
     let randomBirthdayInMS=(Math.floor(Math.random() * (youngestBirthday - oldestBirthday + 1) + oldestBirthday));
-    // + 1 umožňuje vygenerovat i maximální hodnota.
+    // + 1 umožňuje vygenerovat i maximální hodnotu.
     // validace výstupu
     if (randomBirthdayInMS<oldestBirthday || randomBirthdayInMS>youngestBirthday) {
     console.log("ERROR");
     }
     // převod na .ISOString
-    // let randomBirthdayISO = new Date(randomBirthdayInMS).toISOString();
     BirthdayArray.push((new Date(randomBirthdayInMS).toISOString()));
-    // console.log(BirthdayArray[i])
 }
   return BirthdayArray;
 }
@@ -38,10 +36,10 @@ function BirthdayRandomizer(count, minAge, maxAge) {
  * Array of people objects.
  */
 function names(count) {
-    const muzKrestni = ["Richard", "Michal", "Igor", "Bohouš", "Jakub", "Ondra", "Tomáš", "Jan", "Martin", "Tonda", "Josef", "Jarmil", "Jára", "Miloš", "David", "Václav", "Karel", "Přemysl", "Otakar"] //19
-    const muzPrimeni = ["Genzer", "Suchánek", "Chmela", "Novotný", "Kohák", "Sokol", "Sýkora", "Vrána,", "Vrabec", "Skočdopole", "Nudil", "Vrtěl", "Cimrman", "Zeman", "Sušil", "Havel", "Čtvrtý", "Hnědý", "Holub"] //19
-    const zenaKrestni = ["Elena", "Anna","Marie","Eva","Lucie","Petra","Jana","Hana","Alena","Martina","Veronika","Tereza","Barbora","Monika","Lenka","Kateřina","Markéta","Dagmar","Ivana","Zuzana","Šárka"]; //20?
-    const zenaPrimeni = ["Živá", "Nováková","Svobodová","Dvořáková","Horáková","Černá","Bílá","Malá","Velká","Krásná","Pokorná","Jelínková","Kučerová","Procházková","Králová","Urbanová","Bláhová","Říhová","Fialová","Veselá","Zubatá", "Slizká"];
+    const muzKrestni = ["Richard", "Michal", "Igor", "Bohouš", "Jakub", "Ondra", "Tomáš", "Jan", "Martin", "Tonda", "Josef", "Jarmil", "Jára", "Miloš", "David", "Václav", "Karel", "Přemysl", "Otakar"]; //19
+    const muzPrimeni = ["Genzer", "Suchánek", "Chmela", "Novotný", "Kohák", "Sokol", "Sýkora", "Vrána,", "Vrabec", "Skočdopole", "Nudil", "Vrtěl", "Cimrman", "Zeman", "Sušil", "Havel", "Čtvrtý", "Hnědý", "Holub"]; //19
+    const zenaKrestni = ["Elena", "Anna","Marie","Eva","Lucie","Petra","Jana","Hana","Alena","Martina","Veronika","Tereza","Barbora","Monika","Lenka","Kateřina","Markéta","Dagmar","Ivana","Zuzana","Šárka"]; //21
+    const zenaPrimeni = ["Živá", "Nováková","Svobodová","Dvořáková","Horáková","Černá","Bílá","Malá","Velká","Krásná","Pokorná","Jelínková","Kučerová","Procházková","Králová","Urbanová","Bláhová","Říhová","Fialová","Veselá","Zubatá", "Slizká"]; //22
 
     let pplArray = [];
 
@@ -53,17 +51,12 @@ function names(count) {
             case 0:
                 clovek.gender = "male";
                 // random jméno
-                // let randomNameIndex = Math.floor(Math.random() * muzKrestni.length);
-                //clovek.name = muzKrestni[randomNameIndex];
                 clovek.name = muzKrestni[(Math.floor(Math.random() * muzKrestni.length))];
-                // let randomSurnameIndex = Math.floor(Math.random() * muzPrimeni.length);
                 clovek.surname = muzPrimeni[(Math.floor(Math.random() * muzPrimeni.length))];
                 break;
             case 1:
                 clovek.gender = "female";
-                // let randomFNameIndex = Math.floor(Math.random() * zenaKrestni.length);
                 clovek.name = zenaKrestni[(Math.floor(Math.random() * zenaKrestni.length))];
-                // let randomFSurnameIndex = Math.floor(Math.random() * zenaPrimeni.length);
                 clovek.surname = zenaPrimeni[(Math.floor(Math.random() * zenaPrimeni.length))];
                 break;
         }
@@ -118,7 +111,7 @@ export function main(dtoIn) {
     return 0;
   }
     // Volání funkcí
-  let lidi = names(dtoIn.count); // [pole, v němž jsou objekty lidí - pohlaví, jméno a přímení]
+  let lidi = names(dtoIn.count); // [pole, v němž jsou objekty lidí - pohlaví, jméno a příjmení]
   let birthday = BirthdayRandomizer(dtoIn.count, dtoIn.age.min, dtoIn.age.max); // pole ISO stringů
   let workload = workloadGen(dtoIn.count); // pole čísel
     // sloučení do jednoho výstupu
