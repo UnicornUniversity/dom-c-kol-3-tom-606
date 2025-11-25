@@ -6,6 +6,7 @@
  * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
  * @returns {Array} of employees
  */
+const now = new Date();
 
 function BirthdayRandomizer(count, minAge, maxAge) {
     // generování validních hranic narozenin a jejich následný převod do MS od roku 1970
@@ -94,7 +95,6 @@ export function main(dtoIn) {
   //readme: github.com/UnicornUniversity/dom-c-kol-3-tom-606
   //TODO edit doc
 
-  now = new Date();
     // Volání funkcí
   let lidi = names(dtoIn.count); // [pole, v němž jsou objekty lidí - pohlaví, jméno a přímení]
   let birthday = BirthdayRandomizer(dtoIn.count, dtoIn.age.min, dtoIn.age.max); // pole ISO stringů
