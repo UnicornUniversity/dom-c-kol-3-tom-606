@@ -7,7 +7,6 @@
  * @param {number} maxAge - Maximum age (oldest possible person).
  * @returns {string[]} - Array of birthdates in ISO string format.
  */
-
 function BirthdayRandomizer(count, minAge, maxAge) {
     const now = new Date();
     // generování validních hranic narozenin a jejich následný převod do MS od roku 1970
@@ -105,6 +104,7 @@ function workloadGen(count) {
  * The main function which calls the application. 
  * Generates an aray of objects of employees based on input dtoIn.
  * This function valides input, calls functions and then returns their output in an Array.
+ * 
  * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
  * @returns {Array} of employees
  */
