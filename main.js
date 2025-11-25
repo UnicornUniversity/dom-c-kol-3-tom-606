@@ -6,6 +6,7 @@
  * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
  * @returns {Array} of employees
  */
+const now = new Date();
 
 function BirthdayRandomizer(count, minAge, maxAge) {
     // generování validních hranic narozenin a jejich následný převod do MS od roku 1970
@@ -46,10 +47,11 @@ function names(count) {
             case 0:
                 clovek.gender = "male";
                 // random jméno
-                let randomNameIndex = Math.floor(Math.random() * muzKrestni.length);
-                clovek.name = muzKrestni[randomNameIndex];
-                let randomSurnameIndex = Math.floor(Math.random() * muzPrimeni.length);
-                clovek.surname = muzPrimeni[randomSurnameIndex];
+                // let randomNameIndex = Math.floor(Math.random() * muzKrestni.length);
+                //clovek.name = muzKrestni[randomNameIndex];
+                clovek.name = muzKrestni[(Math.floor(Math.random() * muzKrestni.length))];
+                // let randomSurnameIndex = Math.floor(Math.random() * muzPrimeni.length);
+                clovek.surname = muzPrimeni[(Math.floor(Math.random() * muzPrimeni.length))];
                 break;
             case 1:
                 clovek.gender = "female";
@@ -88,13 +90,19 @@ function workloadGen(count) {
 
 export function main(dtoIn) {
 
-  // TODO: Validovat vstup, aby byly ty jednotlivé hodnoty opravdu číslo
 
   //TODO code
   //readme: github.com/UnicornUniversity/dom-c-kol-3-tom-606
   //TODO edit doc
 
-  now = new Date();
+    // Validace vstupu
+  if (Number.isNaN(dtoIn.count) || Number.isNaN(dtoIn.age.min) || Number.isNaN(dtoIn.age.max)) {
+    console.log("ERROR - Chybné vstupní hodnoty!");
+  }
+    // nula
+  if (dtoIn.count === 0) {
+    return 0;
+  }
     // Volání funkcí
   let lidi = names(dtoIn.count); // [pole, v němž jsou objekty lidí - pohlaví, jméno a přímení]
   let birthday = BirthdayRandomizer(dtoIn.count, dtoIn.age.min, dtoIn.age.max); // pole ISO stringů
