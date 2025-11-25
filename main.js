@@ -6,25 +6,24 @@
  * @param {object} dtoIn contains count of employees, age limit of employees {min, max}
  * @returns {Array} of employees
  */
-const now = new Date();
 
 function BirthdayRandomizer(count, minAge, maxAge) {
+    const now = new Date();
     // generování validních hranic narozenin a jejich následný převod do MS od roku 1970
-    const youngestBirthday = new Date((now.getFullYear()-minAge),0,1,0,0,0,0).getTime(); // minimální věk --> nejvyšší možný datum narozenin: 1. 1. 2006
-    const oldestBirthday = new Date((now.getFullYear()-maxAge),0,1,0,0,0,0).getTime(); // maximální věk --> nejnižší možný datum narozenin -->  1.1. 1990
-    // bylo třeba přidat jako den: 1, neboť dny narozdíl od měsíců v JS začínají od 1, 0 mi o 1 den odečítalo.
+    const youngestBirthday = new Date((now.getFullYear()-minAge),now.getMonth(),now.getDate(),now.getHours(),now.getMinutes(),now.getSeconds(),now.getMilliseconds()).getTime(); // minimální věk --> nejvyšší možný datum narozenin
+    const oldestBirthday = new Date((now.getFullYear()-maxAge),now.getMonth(),now.getDate(),now.getHours(),now.getMinutes(),now.getSeconds(),now.getMilliseconds()).getTime(); // maximální věk --> nejnižší možný datum narozenin
 
     let BirthdayArray = [];
     for(let i = 0; i < count; i++) {
-    let randomBirthdayInMS=(Math.floor(Math.random() * (youngestBirthday - oldestBirthday) + oldestBirthday));
+    let randomBirthdayInMS=(Math.floor(Math.random() * (youngestBirthday - oldestBirthday + 1) + oldestBirthday));
     // + 1 umožňuje, že se může vygenerovat i maximální hodnota.
     // validace výstupu
     if (randomBirthdayInMS<oldestBirthday || randomBirthdayInMS>youngestBirthday) {
     console.log("ERROR");
     }
     // převod na .ISOString
-    let randomBirthdayISO = new Date(randomBirthdayInMS).toISOString();
-    BirthdayArray.push(randomBirthdayISO);
+    // let randomBirthdayISO = new Date(randomBirthdayInMS).toISOString();
+    BirthdayArray.push((new Date(randomBirthdayInMS).toISOString()));
     // console.log(BirthdayArray[i])
 }
   return BirthdayArray;
