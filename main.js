@@ -16,10 +16,10 @@ function BirthdayRandomizer(count, minAge, maxAge) {
 
     let BirthdayArray = [];
     for(let i = 0; i < count; i++) {
-    let randomBirthdayInMS=(Math.floor(Math.random() * (youngestBirthday - oldestBirthday + 1) + oldestBirthday));
+    let randomBirthdayInMS=(Math.floor(Math.random() * (youngestBirthday - oldestBirthday) + oldestBirthday));
     // + 1 umožňuje, že se může vygenerovat i maximální hodnota.
     // validace výstupu
-    if (randomBirthdayInMS<oldestBirthday || randomBirthdayInMS[i]>youngestBirthday) {
+    if (randomBirthdayInMS<oldestBirthday || randomBirthdayInMS>youngestBirthday) {
     console.log("ERROR");
     }
     // převod na .ISOString
